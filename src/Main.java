@@ -28,5 +28,20 @@ public class Main {
 
         //wyświetlenie wszystkich firm --w tym celu tworzymy metodę displayAll w companyRepo:
         companyRepo.displayAll();
+
+
+        //zadanie 2 - umożliwienie wyszukania firmy po nr Nip:
+
+        System.out.println("******* poszukiwanie firmy o Nip = 1121111111 *******");
+        Company  company = companyRepo.findCompany(1121111111);
+        company.display(); //wyszukaj i poźniej wyświetl comoany całościowo, wszystkie informacje z repo o niej.
+
+        System.out.println("******* poszukiwanie firmy o Nip = 1111111112 *******");
+        company = companyRepo.findCompany(1111111112);
+        if(company != null){
+        company.display(); //display nie mozna wykonac na nullu, trzeba się zabezpieczyć np IF.
+        } else {
+            System.out.println("Not found.");
+        }
     }
 }

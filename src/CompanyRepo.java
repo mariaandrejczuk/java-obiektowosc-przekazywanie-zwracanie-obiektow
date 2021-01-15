@@ -10,7 +10,7 @@ public class CompanyRepo {
         if (iterator < companies.length) {
             companies[iterator] = company;  //dodaję do tablicy, podajac nazwę tablicy, index i zwykłe przypianie
             iterator++;
-        }else{
+        } else {
             System.out.println();
             System.out.println("Brak miejsc dla firmy: ");
             System.out.println();
@@ -18,12 +18,24 @@ public class CompanyRepo {
         }
     }
 
+    //metoda wyszukująca firmy po Nip
+    Company findCompany(long nip) {
+        Company findedCompany = null;
+        for (int i = 0; i < companies.length && companies[i] != null; i++) {
+            if (companies[i].nip == nip) {
+                findedCompany = companies[i];
+            }
+        }
+        return findedCompany;
+    }
+
+
     //metoda wyświetlająca wszystkie firmy: nie potrzebuje parametrówm, ani też nic nie zwraca:
 
     void displayAll() {
         System.out.println();
         System.out.println("*********** wszystkie firmy ************");
-        for (int i = 0; i < companies.length && companies[i] != null; i++) {
+        for (int i = 0; i < companies.length && companies[i] != null; i++) {  //to jest petla przechodząca przez wszystkie firmy, jeżeli istnieją
             companies[i].display(); //żeby wyświetlić konktetną firmę company, potrzebuję dodatkowo metody display ale w Company
             System.out.println();
         }
